@@ -1,4 +1,4 @@
-/*package me.tqi.controler
+package me.tqi.controler
 
 
 import me.tqi.dto.response.UsuarioTotalCompraView
@@ -12,8 +12,7 @@ import org.springframework.web.bind.annotation.*
 @RestController
 @RequestMapping("/api/carrinhototal")
 class UsuarioTotalCompraResource(
-    private val usuarioTotalCompraService: UsuarioTotalCompraService,
-    private val usuarioTotalCompraRepository: UsuarioTotalCompraRepository
+    private val usuarioTotalCompraService: UsuarioTotalCompraService
 ) {
    /* @GetMapping ("/{idUsuario}")
     fun usuarioCompraTotal(@PathVariable IdUsuario: Long): ResponseEntity<UsuarioTotalCompraView>{
@@ -37,4 +36,3 @@ class UsuarioTotalCompraResource(
     }
 }
 
- */

@@ -11,6 +11,5 @@ class UsuarioTotalCompraService(
 ): IUsuarioTotalCompra {
     override fun obterTotalUsuario(idUsuario: Long): UsuarioTotalCompra {
         return usuarioTotalCompraRepository.obterTotalCompraPorUsuario(idUsuario)
-            //?: throw RuntimeException("UsuarioTotalCompra $idUsuario not found")
     }
 }

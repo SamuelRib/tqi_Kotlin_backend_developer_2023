@@ -8,8 +8,9 @@ import org.springframework.stereotype.Repository
 @Repository
 interface UsuarioTotalCompraRepository: JpaRepository<UsuarioTotalCompra, Long> {
 
+    //Essa query pesquisa o id do usuario e retorna o valor total da compra feita no carrinho
     @Query(
-        value = "SELECT usuario_id, SUM(quantidade + preco_unitario) AS total_compra" +
+        value = "SELECT usuario_id, SUM(quantidade * preco_unitario) AS total_compra" +
                 " FROM carrinho" +
                 " JOIN produto ON carrinho.produto_id_produto = produto.id_produto" +
                 " WHERE carrinho.usuario_id = ?1 GROUP BY usuario_id;",

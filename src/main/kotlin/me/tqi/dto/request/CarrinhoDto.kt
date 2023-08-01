@@ -9,12 +9,12 @@ import me.tqi.entity.Usuario
 
 
 data class CarrinhoDto(
-    @field:NotEmpty(message = "Invalid input")val idUsuario: Long,
+    @field:NotEmpty(message = "Invalid input") val idUsuario: Long,
     @field:NotNull(message = "Invalid input") val idProduto: Long,
-    @field:NotEmpty(message = "Invalid input")val quantidade: Int,
+    @field:NotEmpty(message = "Invalid input") val quantidade: Int,
     val precoUnitario: Double
 
-    ) {
+) {
     fun toEntity(): Carrinho = Carrinho(
         usuario = Usuario(
             id = this.idUsuario
@@ -26,14 +26,4 @@ data class CarrinhoDto(
         ),
         quantidade = this.quantidade
     )
-
 }
-
-/*
-        usuario = mutableListOf(
-            Usuario(
-                cpf = this.cpf
-            )
-        ),
- */
-

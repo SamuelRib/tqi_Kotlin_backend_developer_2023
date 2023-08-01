@@ -1,7 +1,7 @@
 package me.tqi.entity
 
 import jakarta.persistence.*
-import java.util.*
+
 
 
 @Entity
@@ -12,5 +12,4 @@ data class Categoria(
     @Column(nullable = false) @OneToMany(fetch = FetchType.LAZY, cascade = arrayOf(CascadeType.REMOVE,
         CascadeType.PERSIST), mappedBy = "categoria")
     var produto: List<Produto> = mutableListOf()
-    //@Id @GeneratedValue(strategy = GenerationType.IDENTITY) val id: Long? = null
 )

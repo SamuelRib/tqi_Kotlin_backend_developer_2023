@@ -9,6 +9,5 @@ data class Carrinho(
     @Column(nullable = false) val quantidade: Int = 0,
     @JoinColumn(nullable = false) @ManyToOne val produto: Produto = Produto(),
     @JoinColumn @ManyToOne val usuario: Usuario = Usuario()
-    //@JoinColumn @ManyToOne val usuario: List<Usuario> = mutableListOf()
 )
 

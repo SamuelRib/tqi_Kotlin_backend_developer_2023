@@ -1,10 +1,8 @@
 package me.tqi.controler
 
 import me.tqi.dto.request.CarrinhoDto
-import me.tqi.dto.response.ProdutoViewList
 import me.tqi.dto.response.UsuarioTotalCompraView
 import me.tqi.entity.Carrinho
-import me.tqi.entity.Produto
 import me.tqi.entity.UsuarioTotalCompra
 import me.tqi.service.impl.CarrinhoService
 import org.springframework.http.HttpStatus
@@ -23,23 +21,9 @@ class CarrinhoResource(
         return ResponseEntity.status(HttpStatus.CREATED).body("Produto ${saveCarrinho.produto} salvo no carrinho!")
     }
 
-    /*@GetMapping("totalUsuario/{IdUsuario}")
-    fun findByIdProduto(@PathVariable IdUsuario: Long): ResponseEntity<UsuarioTotalCompra> {
-        val produto: List<UsuarioTotalCompra> = this.carrinhoService.obterUsuariosTotalCompra(idUsuario = )
-        return ResponseEntity.status(HttpStatus.OK).body(ProdutoViewList(produto))
-    }
-
-     */
-
-
-    @GetMapping
-    fun carrinhoPrecoTotal(@RequestParam(value = "IdUsuario") IdUsuario: Long): ResponseEntity<String> {
-        return ResponseEntity.status(HttpStatus.OK).body("Carrinho $IdUsuario salvo!")
-    }
-
 
     //Nesse código estou tentando obter o valor total do usuário, mas não finalizei ainda.
-    @GetMapping("/totalCompraPorUsuario/{usuarioId}")
+    @GetMapping("/totalcompraporusuario/{usuarioId}")
     fun obterTotalCompraPorUsuario1(@PathVariable usuarioId: Long):
             ResponseEntity<List<UsuarioTotalCompraView>> {
         val usuarioTotalCompraView: List<UsuarioTotalCompraView> =
@@ -49,6 +33,7 @@ class CarrinhoResource(
                 .collect(Collectors.toList())
         return ResponseEntity.status(HttpStatus.OK).body(usuarioTotalCompraView)
     }
-
 }
+
+
 

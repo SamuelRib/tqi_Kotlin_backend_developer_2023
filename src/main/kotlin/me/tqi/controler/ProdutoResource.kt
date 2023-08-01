@@ -55,7 +55,7 @@ class ProdutoResource(
     }
 
 
-    //Não acho q tenha necessidade, está desativado, FUNÇÃO: PESQUISA PELO PRODUTOCODE
+    //Função: pesquisa pelo produto code
     @GetMapping("/{produtoCode}")
     fun findByProdutoCode(
         @RequestParam(value = "idProduto") idProduto: Long,
@@ -63,6 +63,5 @@ class ProdutoResource(
     ): ResponseEntity<ProdutoViewList> {
         val produto: Produto = this.produtoService.findByIdProduto(idProduto)
         return ResponseEntity.status(HttpStatus.OK).body(ProdutoViewList(produto))
-
     }
 }

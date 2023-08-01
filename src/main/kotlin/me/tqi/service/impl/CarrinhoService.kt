@@ -5,6 +5,8 @@ import me.tqi.repository.CarrinhoRepository
 import me.tqi.service.ICarrinhoService
 import org.springframework.stereotype.Service
 
+
+
 @Service
 class CarrinhoService(
     private val carrinhoRepository: CarrinhoRepository
@@ -14,12 +16,9 @@ class CarrinhoService(
     }
 
     override fun findByIdUsuarioCarrinho(idUsuario: Long): List<Carrinho> {
-        return this.carrinhoRepository.findByIdUsuarioCarrinho(idUsuario)
+        TODO("Not yet implemented")
     }
 
-    override fun findByIdCarrinho(idCarrinho: Long): Carrinho {
-        return this.findByIdCarrinho(idCarrinho)
-    }
 
     //A partir de um idUsuario ele obtém o valor total de itens que o usuario selecionou
     fun obterUsuariosTotalCompra(idUsuario: Long): List<UsuarioTotalCompra> {
