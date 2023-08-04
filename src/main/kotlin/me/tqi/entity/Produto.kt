@@ -7,7 +7,7 @@ import java.util.*
 @Table(name = "Produto")
 data class Produto(
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY) val idProduto: Long? = null,
-    @Column(nullable = false, unique = true) val produtoCode: UUID = UUID.randomUUID(),
+    @Column(nullable = false, unique = true) var produtoCode: UUID = UUID.randomUUID(),
     @Column(nullable = false) var nomeProduto: String = "",
     @Column(nullable = false) @Embedded var unidadeMedida: UnidadeMedida = UnidadeMedida(),
     @Column(nullable = false) var precoUnitario: Double = 0.0,

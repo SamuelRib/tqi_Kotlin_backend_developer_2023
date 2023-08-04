@@ -18,7 +18,7 @@ class CarrinhoResource(
     @PostMapping
     fun saveCarrinho(@RequestBody carrinhoDto: CarrinhoDto): ResponseEntity<String> {
         val saveCarrinho: Carrinho = this.carrinhoService.salvarProdutoNoCarrinho(carrinhoDto.toEntity())
-        return ResponseEntity.status(HttpStatus.CREATED).body("Produto ${saveCarrinho.produto} salvo no carrinho!")
+        return ResponseEntity.status(HttpStatus.CREATED).body("Produto do Id_${carrinhoDto.idProduto} salvo no carrinho!")
     }
 
 
