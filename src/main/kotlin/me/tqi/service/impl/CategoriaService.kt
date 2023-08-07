@@ -19,6 +19,7 @@ class CategoriaService(
     }
 
     override fun deleteCategoria(idCategoria: Long) {
+        val categoria: Categoria = this.findByIdCategoria(idCategoria)
         this.categoriaRepository.deleteById(idCategoria)
     }
 }
