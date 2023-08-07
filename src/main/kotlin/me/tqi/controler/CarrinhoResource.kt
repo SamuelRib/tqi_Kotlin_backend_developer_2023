@@ -24,32 +24,6 @@ class CarrinhoResource(
         return ResponseEntity.status(HttpStatus.CREATED).body("Produto do Id_${carrinhoDto.idProduto} salvo no carrinho!")
     }
 
-    /*
-    @GetMapping("/{idCarrinho")
-    fun findByIdCarrinho(@PathVariable idCarrinho: Long): ResponseEntity<CarrinhoView>{
-        val carrinho: List<Carrinho> = this.carrinhoService.findByIdUsuarioCarrinho(idCarrinho)
-        return ResponseEntity.status(HttpStatus.OK).body(CarrinhoView(carrinho))
-    }
-
-    @GetMapping("/totalcompraporusuario/{usuarioId}")
-    fun obterTotalCompraPorUsuario2(@PathVariable usuarioId: Long):
-            ResponseEntity<List<CarrinhoView>> {
-        val usuarioTotalCompraView: List<CarrinhoView> =
-            this.carrinhoService.findByIdUsuarioCarrinho(usuarioId)
-                .stream()
-                .map { carrinho: CarrinhoView -> CarrinhoView(carrinho) }
-                .collect(Collectors.toList())
-        return ResponseEntity.status(HttpStatus.OK).body(usuarioTotalCompraView)
-    }
-    */
-
-    /*
-        @GetMapping("/{idCarrinho")
-    fun findByIdCarrinho(@PathVariable idCarrinho: Long): ResponseEntity<CarrinhoView>{
-        val carrinho: List<Carrinho> = this.carrinhoService.findByIdUsuarioCarrinho(idCarrinho)
-        return ResponseEntity.status(HttpStatus.OK).body(CarrinhoView(carrinho))
-    }
-     */
 
 
     //Nesse código estou tentando obter o valor total do usuário, mas não finalizei ainda.
