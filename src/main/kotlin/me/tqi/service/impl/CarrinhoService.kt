@@ -15,8 +15,13 @@ class CarrinhoService(
         return this.carrinhoRepository.save(carrinho)
     }
 
+    override fun findByIdCarrinho(idCarrinho: Long): Carrinho {
+        return this.carrinhoRepository.findById(idCarrinho)
+            .orElseThrow { throw RuntimeException("idCarrinho $idCarrinho não encontrado") }
+    }
+
     override fun findByIdUsuarioCarrinho(idUsuario: Long): List<Carrinho> {
-        TODO("Not yet implemented")
+        return this.findByIdUsuarioCarrinho(idUsuario)
     }
 
 
@@ -26,7 +31,8 @@ class CarrinhoService(
     }
 
     override fun deleteCarrinho(idCarrinho: Long) {
-        this.carrinhoRepository.deleteById(idCarrinho)
+        val carrinho: Carrinho = this.findByIdCarrinho(idCarrinho)
+        this.carrinhoRepository.delete(carrinho)
     }
 
 }
