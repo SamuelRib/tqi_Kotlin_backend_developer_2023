@@ -29,7 +29,7 @@ class CategoriaServiceTest {
     fun `should create categoria`() {
         //given
         val fakeCategoria: Categoria = builderCategoria()
-        every { categoriaRepository.save(any()) } returns fakeCategoria //estou simulando que há um fakeCategoria salvo no meu BD
+        every { categoriaRepository.save(any()) } returns fakeCategoria //simula uma fakeCategoria salva no BD
         //when
         val actual: Categoria = categoriaService.save(fakeCategoria)
         //then
@@ -60,7 +60,6 @@ class CategoriaServiceTest {
         //given
         val fakeId: Long = Random().nextLong()
         every { categoriaRepository.findById(fakeId) } returns Optional.empty() //no teste, o fake id salvo corresponde a um valor vazio
-        //when
         //then
         org.assertj.core.api.Assertions.assertThatExceptionOfType(RuntimeException::class.java) //é o retorno da Excepetion por ter colocado um faked id Vazio
             .isThrownBy { categoriaService.findByIdCategoria(fakeId) }
@@ -76,9 +75,11 @@ class CategoriaServiceTest {
         val fakeCategoria: Categoria = builderCategoria(fakeId) //é o id salvo no banco de dados
         every { categoriaRepository.findById(fakeId) } returns Optional.of(fakeCategoria)
         every { categoriaRepository.delete(fakeCategoria) } just runs //como não vai retornar nada, usamos o just runs para indicar        //when
+        //when
+        categoriaService.deleteCategoria(fakeId)
         //then
-       //verify(exactly = 1) { categoriaRepository.findById(fakeId) }
-       //verify(exactly = 1) { categoriaRepository.delete(fakeCategoria) }
+       verify(exactly = 1) { categoriaRepository.findById(fakeId) }
+       verify(exactly = 1) { categoriaRepository.delete(fakeCategoria) }
     }
 
 
