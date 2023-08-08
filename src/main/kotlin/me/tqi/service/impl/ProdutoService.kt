@@ -18,12 +18,15 @@ class ProdutoService(
         return this.produtoRepository.findByAllCategoriaId(idCategoria)
     }
 
+    //Lcaliza o produto por seu IdProduto
     override fun findByIdProduto(idProduto: Long): Produto {
-        return produtoRepository.findByIdProduto(idProduto)
-            ?: throw RuntimeException("ProdutoCode $idProduto not found")
+        return this.produtoRepository.findById(idProduto)
+            .orElseThrow{ throw RuntimeException("IdProduto $idProduto not found")
+        }
     }
 
     override fun deleteProduto(idProduto: Long) {
-        this.produtoRepository.deleteById(idProduto)
+        val produto: Produto = this.findByIdProduto(idProduto)
+        this.produtoRepository.delete(produto)
     }
 }
