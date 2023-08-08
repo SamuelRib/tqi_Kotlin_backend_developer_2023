@@ -74,12 +74,12 @@ class CategoriaServiceTest {
         val fakeId: Long = Random().nextLong()
         val fakeCategoria: Categoria = builderCategoria(fakeId) //é o id salvo no banco de dados
         every { categoriaRepository.findById(fakeId) } returns Optional.of(fakeCategoria)
-        every { categoriaRepository.delete(fakeCategoria) } just runs //como não vai retornar nada, usamos o just runs para indicar        //when
+        every { categoriaRepository.delete(fakeCategoria) } just runs //como não vai retornar nada, usamos o just runs para indicar
         //when
         categoriaService.deleteCategoria(fakeId)
         //then
-       verify(exactly = 1) { categoriaRepository.findById(fakeId) }
-       verify(exactly = 1) { categoriaRepository.delete(fakeCategoria) }
+       verify(exactly = 1) { categoriaRepository.findById(fakeId) } // verifica se o método findById do categoriaRepository foi chamado exatamente uma vez com o ID falso
+       verify(exactly = 1) { categoriaRepository.delete(fakeCategoria) } //verifica se o método delete do categoriaRepository foi chamado exatamente uma vez com o objeto fakeCategoria
     }
 
 
