@@ -19,6 +19,7 @@ class UsuarioService(
     }
 
     override fun deleteUsuario(idUsuario: Long) {
-        this.usuarioRepository.deleteById(idUsuario)
+        val usuario: Usuario = this.findByIdUsuario(idUsuario)
+        this.usuarioRepository.delete(usuario)
     }
 }
