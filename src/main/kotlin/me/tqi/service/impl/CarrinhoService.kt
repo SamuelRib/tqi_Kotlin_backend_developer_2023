@@ -21,7 +21,7 @@ class CarrinhoService(
     }
 
     override fun findByIdUsuarioCarrinho(idUsuario: Long): List<Carrinho> {
-        return this.findByIdUsuarioCarrinho(idUsuario)
+        return this.carrinhoRepository.findByIdUsuarioCarrinho(idUsuario)
     }
 
 

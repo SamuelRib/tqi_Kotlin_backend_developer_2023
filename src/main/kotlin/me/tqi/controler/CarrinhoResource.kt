@@ -24,6 +24,25 @@ class CarrinhoResource(
         return ResponseEntity.status(HttpStatus.CREATED).body("Produto do Id_${carrinhoDto.idProduto} salvo no carrinho!")
     }
 
+    //Localiza um dos itens colocados no carrinho
+    @GetMapping("/id/{idCarrinho}")
+    fun findByIdCarrinho(@PathVariable idCarrinho: Long): ResponseEntity<CarrinhoView> {
+        val carrinho: Carrinho =  this.carrinhoService.findByIdCarrinho(idCarrinho)
+        return ResponseEntity.status(HttpStatus.OK).body(CarrinhoView(carrinho))
+    }
+
+
+
+    //Localiza todos os produtos adicionados no carrinho de compra de acordo com o idUsuario selecionado.
+    @GetMapping("/usuario/{idUsuario}")
+    fun findByIdCarrinhoUsuario(@PathVariable idUsuario: Long):
+            ResponseEntity<List<CarrinhoView>> {
+        val carrinhoView: List<CarrinhoView> = this.carrinhoService.findByIdUsuarioCarrinho(idUsuario)
+            .stream()
+            .map { carrinho: Carrinho -> CarrinhoView(carrinho) }
+            .collect(Collectors.toList())
+        return ResponseEntity.status(HttpStatus.OK).body(carrinhoView)
+    }
 
 
     //Nesse código estou tentando obter o valor total do usuário, mas não finalizei ainda.
@@ -36,6 +55,13 @@ class CarrinhoResource(
                 .map { usuarioTotalCompra: UsuarioTotalCompra -> UsuarioTotalCompraView(usuarioTotalCompra) }
                 .collect(Collectors.toList())
         return ResponseEntity.status(HttpStatus.OK).body(usuarioTotalCompraView)
+    }
+
+    //Deleta o carrinho
+    @DeleteMapping("/{idCarrinho}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    fun deleteCarrinho(@PathVariable idCarrinho: Long) {
+        this.carrinhoService.deleteCarrinho(idCarrinho)
     }
 
 
