@@ -11,6 +11,6 @@ interface ProdutoRepository: JpaRepository<Produto, Long> {
 
 
     //ele vai olhar na tabela produtos a coluna CATEGORIA_ID_CATEGORIA e usar o parâmetro idCategoria do método para encontrá-lo
-    @Query(value = "SELECT * FROM PRODUTO WHERE CATEGORIA_ID = ?1", nativeQuery = true)
+    @Query(value = "SELECT * FROM produto WHERE CATEGORIA_ID = ?1", nativeQuery = true)
     fun findByAllCategoriaId(idCategoria: Long): List<Produto>
 }

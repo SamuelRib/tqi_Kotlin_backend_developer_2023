@@ -11,7 +11,6 @@ class ProdutoService(
 ): IProdutoService {
     override fun save(produto: Produto): Produto {
         return this.produtoRepository.save(produto)
-        //produto.apply { categoria = categoriaService.findById(produto.categoria?.id!!) } //ver depois se precisa desse codigo
     }
 
     override fun findAllByProdutosCategoria(idCategoria: Long): List<Produto> { //Traz todos os produtos de uma determinada categoria
