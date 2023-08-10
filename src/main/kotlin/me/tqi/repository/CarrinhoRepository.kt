@@ -19,5 +19,5 @@ interface CarrinhoRepository : JpaRepository<Carrinho, Long> {
                 " WHERE carrinho.usuario_id = ?1 GROUP BY usuario_id;",
         nativeQuery = true
     )
-    fun obterTotalCompraPorUsuario(usuarioId: Long): List<UsuarioTotalCompra>
+    fun obterTotalCompraPorUsuario(usuarioId: Long): UsuarioTotalCompra
 }

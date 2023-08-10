@@ -4,13 +4,13 @@ import me.tqi.entity.Carrinho
 
 
 data class CarrinhoView(
-    val cpf: String,
     val nomeProduto: String,
-    val precoUnitario: Double
+    val precoUnitario: Double,
+    val quantidade: Int,
 ){
     constructor(carrinho: Carrinho): this(
-        cpf = carrinho.usuario.cpf,
         nomeProduto = carrinho.produto.nomeProduto,
-        precoUnitario = carrinho.produto.precoUnitario
+        precoUnitario = carrinho.produto.precoUnitario,
+        quantidade = carrinho.quantidade
         )
 }

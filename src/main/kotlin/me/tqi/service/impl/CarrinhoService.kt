@@ -26,7 +26,7 @@ class CarrinhoService(
 
 
     //A partir de um idUsuario ele obtém o valor total de itens que o usuario selecionou
-    fun obterUsuariosTotalCompra(idUsuario: Long): List<UsuarioTotalCompra> {
+    fun obterUsuariosTotalCompra(idUsuario: Long): UsuarioTotalCompra {
         return carrinhoRepository.obterTotalCompraPorUsuario(idUsuario)
     }
 

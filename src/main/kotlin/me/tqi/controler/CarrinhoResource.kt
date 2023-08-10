@@ -47,14 +47,11 @@ class CarrinhoResource(
 
     //Nesse código estou tentando obter o valor total do usuário, mas não finalizei ainda.
     @GetMapping("/totalcompraporusuario/{usuarioId}")
-    fun obterTotalCompraPorUsuario1(@PathVariable usuarioId: Long):
-            ResponseEntity<List<UsuarioTotalCompraView>> {
-        val usuarioTotalCompraView: List<UsuarioTotalCompraView> =
-            this.carrinhoService.obterUsuariosTotalCompra(usuarioId)
-                .stream()
-                .map { usuarioTotalCompra: UsuarioTotalCompra -> UsuarioTotalCompraView(usuarioTotalCompra) }
-                .collect(Collectors.toList())
-        return ResponseEntity.status(HttpStatus.OK).body(usuarioTotalCompraView)
+    fun obterTotalCompraPorUsuario1(@PathVariable idUsuario: Long):
+            ResponseEntity<UsuarioTotalCompraView> {
+        val usuarioTotalCompra: UsuarioTotalCompra =
+            this.carrinhoService.obterUsuariosTotalCompra(idUsuario)
+        return ResponseEntity.status(HttpStatus.OK).body(UsuarioTotalCompraView(usuarioTotalCompra))
     }
 
     //Deleta o carrinho
@@ -63,8 +60,6 @@ class CarrinhoResource(
     fun deleteCarrinho(@PathVariable idCarrinho: Long) {
         this.carrinhoService.deleteCarrinho(idCarrinho)
     }
-
-
 
 }
 
