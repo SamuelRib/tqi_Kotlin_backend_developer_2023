@@ -46,7 +46,7 @@ class CarrinhoResource(
 
 
     //Nesse código estou tentando obter o valor total do usuário, mas não finalizei ainda.
-    @GetMapping("/totalcompraporusuario/{usuarioId}")
+    @GetMapping("/totalcompraporusuario/{idUsuario}")
     fun obterTotalCompraPorUsuario1(@PathVariable idUsuario: Long):
             ResponseEntity<UsuarioTotalCompraView> {
         val usuarioTotalCompra: UsuarioTotalCompra =
