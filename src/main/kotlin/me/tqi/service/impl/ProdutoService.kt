@@ -13,7 +13,8 @@ class ProdutoService(
         return this.produtoRepository.save(produto)
     }
 
-    override fun findAllByProdutosCategoria(idCategoria: Long): List<Produto> { //Traz todos os produtos de uma determinada categoria
+    //Traz todos os produtos de uma determinada categoria
+    override fun findAllByProdutosCategoria(idCategoria: Long): List<Produto> {
         return this.produtoRepository.findByAllCategoriaId(idCategoria)
     }
 
