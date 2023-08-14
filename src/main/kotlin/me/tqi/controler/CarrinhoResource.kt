@@ -2,9 +2,7 @@ package me.tqi.controler
 
 import me.tqi.dto.request.CarrinhoDto
 import me.tqi.dto.response.CarrinhoView
-import me.tqi.dto.response.UsuarioTotalCompraView
 import me.tqi.entity.Carrinho
-import me.tqi.entity.UsuarioTotalCompra
 import me.tqi.service.impl.CarrinhoService
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
@@ -21,19 +19,19 @@ class CarrinhoResource(
     @PostMapping
     fun saveCarrinho(@RequestBody carrinhoDto: CarrinhoDto): ResponseEntity<String> {
         val saveCarrinho: Carrinho = this.carrinhoService.salvarProdutoNoCarrinho(carrinhoDto.toEntity())
-        return ResponseEntity.status(HttpStatus.CREATED).body("Produto do Id_${carrinhoDto.idProduto} salvo no carrinho!")
+        return ResponseEntity.status(HttpStatus.CREATED)
+            .body("Produto do Id_${carrinhoDto.idProduto} salvo no carrinho!")
     }
 
-    //Localiza um dos itens colocados no carrinho
+    //Localiza um dos itens colocados no carrinho através do idCarrinho
     @GetMapping("/id/{idCarrinho}")
     fun findByIdCarrinho(@PathVariable idCarrinho: Long): ResponseEntity<CarrinhoView> {
-        val carrinho: Carrinho =  this.carrinhoService.findByIdCarrinho(idCarrinho)
+        val carrinho: Carrinho = this.carrinhoService.findByIdCarrinho(idCarrinho)
         return ResponseEntity.status(HttpStatus.OK).body(CarrinhoView(carrinho))
     }
 
 
-
-    //Localiza todos os produtos adicionados no carrinho de compra de acordo com o idUsuario selecionado.
+    //Localiza todos os produtos adicionados no carrinho de compra de acordo com do idUsuario selecionado.
     @GetMapping("/usuario/{idUsuario}")
     fun findByIdCarrinhoUsuario(@PathVariable idUsuario: Long):
             ResponseEntity<List<CarrinhoView>> {
@@ -45,13 +43,12 @@ class CarrinhoResource(
     }
 
 
-    //Nesse código estou tentando obter o valor total do usuário, mas não finalizei ainda.
+    //retorna o valor total dos itens adicionados no carrinho do usuario
     @GetMapping("/totalcompraporusuario/{idUsuario}")
     fun obterTotalCompraPorUsuario1(@PathVariable idUsuario: Long):
-            ResponseEntity<UsuarioTotalCompraView> {
-        val usuarioTotalCompra: UsuarioTotalCompra =
-            this.carrinhoService.obterUsuariosTotalCompra(idUsuario)
-        return ResponseEntity.status(HttpStatus.OK).body(UsuarioTotalCompraView(usuarioTotalCompra))
+            ResponseEntity<Double> {
+        val usuarioTotalCompra: Double = this.carrinhoService.obterUsuariosTotalCompra(idUsuario)
+        return ResponseEntity.status(HttpStatus.OK).body(usuarioTotalCompra)
     }
 
     //Deleta o carrinho
