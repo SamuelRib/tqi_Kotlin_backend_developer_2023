@@ -58,6 +58,4 @@ class UsuarioResource(
         this.usuarioService.deleteUsuario(idUsuario)
     }
 
-
-
 }
