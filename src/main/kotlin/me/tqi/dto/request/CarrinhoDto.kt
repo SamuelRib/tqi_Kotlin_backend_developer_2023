@@ -11,8 +11,7 @@ import me.tqi.entity.Usuario
 data class CarrinhoDto(
     @field:NotEmpty(message = "Invalid input") val idUsuario: Long,
     @field:NotNull(message = "Invalid input") val idProduto: Long,
-    @field:NotEmpty(message = "Invalid input") val quantidade: Int,
-    val precoUnitario: Double
+    @field:NotEmpty(message = "Invalid input") val quantidade: Int
 
 ) {
     fun toEntity(): Carrinho = Carrinho(
@@ -20,9 +19,7 @@ data class CarrinhoDto(
             id = this.idUsuario
         ),
         produto = Produto(
-            idProduto = this.idProduto,
-            precoUnitario = this.precoUnitario
-
+            idProduto = this.idProduto
         ),
         quantidade = this.quantidade
     )
