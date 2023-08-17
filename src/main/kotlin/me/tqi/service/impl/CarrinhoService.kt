@@ -17,7 +17,7 @@ class CarrinhoService(
 
     override fun findByIdCarrinho(idCarrinho: Long): Carrinho {
         return this.carrinhoRepository.findById(idCarrinho)
-            .orElseThrow { throw RuntimeException("idCarrinho $idCarrinho não encontrado") }
+            .orElseThrow { throw RuntimeException("idCarrinho $idCarrinho not found") }
     }
 
     override fun findByIdUsuarioCarrinho(idUsuario: Long): List<Carrinho> {
