@@ -85,15 +85,18 @@ class ProdutoServiceTest {
 
 
 }
+
 private fun builderProduto(
     idProduto: Long = 1,
-     nomeProduto: String = "Leite Integral",
-     precoUnitario: Double= 12.0,
+    nomeProduto: String = "Leite Integral",
+    precoUnitario: Double = 12.0,
+    unidadeMedida: String = "Litro",
     idCategoria: Long = 1
 ) = Produto(
     idProduto = idProduto,
     nomeProduto = nomeProduto,
     precoUnitario = precoUnitario,
+    unidadeMedida = unidadeMedida,
     categoria = Categoria(
         id = idCategoria
     )
