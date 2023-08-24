@@ -13,5 +13,7 @@ data class Usuario(
     @Column(nullable = false)var endereco: String = "",
     @Column(nullable = false) @OneToMany(fetch = FetchType.LAZY, cascade = arrayOf(CascadeType.REMOVE,
     CascadeType.PERSIST), mappedBy = "usuario")
-    var carrinho: List<Carrinho> = mutableListOf()
+    var carrinho: List<Carrinho> = mutableListOf(),
+    @OneToMany(mappedBy = "usuario", cascade = [CascadeType.ALL])
+    val finalizacaoVenda: List<FinalizacaoVenda> = mutableListOf()
 )
